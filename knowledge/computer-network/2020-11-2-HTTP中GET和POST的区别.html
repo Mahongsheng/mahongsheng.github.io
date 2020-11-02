@@ -1,0 +1,90 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.3.0" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.3.0" type="image/png" sizes="32x32"><meta name="description" content="HTTP中GET和POST的区别       我们先来看看HTTP是什么？                     HTTP：       HTTP协议：（HyperText Transfer Protocol超文本传输协议）是因特网上应用最为广泛的一种网络传输协议，所有的www文件都必须遵守的标准。是基于TCP&#x2F;IP的关于数据在万维网中如何通讯的协议。 H">
+<meta property="og:type" content="website">
+<meta property="og:title" content="HTTP中GET和POST的区别">
+<meta property="og:url" content="http://mhsfire.cn/knowledge/computer-network/2020-11-2-HTTP%E4%B8%ADGET%E5%92%8CPOST%E7%9A%84%E5%8C%BA%E5%88%AB.html">
+<meta property="og:site_name" content="马洪升的博客">
+<meta property="og:description" content="HTTP中GET和POST的区别       我们先来看看HTTP是什么？                     HTTP：       HTTP协议：（HyperText Transfer Protocol超文本传输协议）是因特网上应用最为广泛的一种网络传输协议，所有的www文件都必须遵守的标准。是基于TCP&#x2F;IP的关于数据在万维网中如何通讯的协议。 H">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s1.ax1x.com/2020/11/02/Br0uVA.png">
+<meta property="article:published_time" content="2020-11-02T13:55:01.000Z">
+<meta property="article:modified_time" content="2020-11-02T14:02:45.057Z">
+<meta property="article:author" content="Scott Ma | 马洪升">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2020/11/02/Br0uVA.png"><title>分类: 面试知识点 | 马洪升的博客</title><link ref="canonical" href="http://mhsfire.cn/knowledge/computer-network/2020-11-2-HTTP%E4%B8%ADGET%E5%92%8CPOST%E7%9A%84%E5%8C%BA%E5%88%AB.html"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.3.0"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":true},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.2.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">马洪升的博客</div><div class="header-banner-info__subtitle"></div></div><div class="header-banner-arrow"><div class="header-banner-arrow__icon"><i class="fas fa-angle-down"></i></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><div class="custompage">
+        <h1 id="HTTP中GET和POST的区别"   >
+          <a href="#HTTP中GET和POST的区别" class="heading-link"><i class="fas fa-link"></i></a>HTTP中GET和POST的区别</h1>
+      <p>我们先来看看HTTP是什么？</p>
+
+        <h3 id="HTTP："   >
+          <a href="#HTTP：" class="heading-link"><i class="fas fa-link"></i></a>HTTP：</h3>
+      <p>HTTP协议：（HyperText Transfer Protocol超文本传输协议）是因特网上应用最为广泛的一种网络传输协议，所有的www文件都必须遵守的标准。是基于TCP/IP的关于数据在万维网中如何通讯的协议。</p>
+<p>HTTP总共有8中请求方法，我们最常见也是最常用到的就是GET和POST请求。现在就简单说说GET和POST请求的区别：</p>
+
+        <h3 id="GET和POST"   >
+          <a href="#GET和POST" class="heading-link"><i class="fas fa-link"></i></a>GET和POST</h3>
+      <p><a target="_blank" rel="noopener" href="https://imgchr.com/i/Br0uVA"><img src="https://s1.ax1x.com/2020/11/02/Br0uVA.png" alt="Br0uVA.png"></a></p>
+<p>如图是<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/html_ref_httpmethods.asp" >W3C</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>官网上对于GET和POST区别的总结，但是他们并没有说明为什么会有这种区别，所有就导致了我们对于GET和POST的区别还是一脸懵。今天就谈谈为什么会有这种区别。以便大家对他们两者的区别有更加深刻的印象：</p>
+
+        <h4 id="1"   >
+          <a href="#1" class="heading-link"><i class="fas fa-link"></i></a>1.</h4>
+      <p>一般来说GET是获取数据，POST是提交数据的。但是因为GET和POST都是HTTP的方法，HTTP又是是基于TCP/IP的关于数据在万维网中 如何让通讯的协议。所以本质上来说GET和POST请求是没有区别 的，都是TCP链接。他们能做的事情是一样的。</p>
+<p>HTTP协议既然有了这两个方法，就是为了在特定的情况下区分应用。就有了我们所说的GET是获取数据，POST是提交数据的。</p>
+
+        <h4 id="2"   >
+          <a href="#2" class="heading-link"><i class="fas fa-link"></i></a>2.</h4>
+      <p>GET传输数据的时候是在URL地址中的、对所有人都是是可见的、是不安全的、是有浏览器缓存记录的。所以说GET是不安全的，发送密码等数据的时候不要用GET传输。</p>
+<p>GET只能传输ASCLL字符，不能进行编码。</p>
+<p>POST传输的时候是放在HTTP的请求体之中的，并且是经过urlencode编码的所以是相对安全的。</p>
+<p>POST是没有对数据类型的限制的，二进制数据也是可以的。</p>
+
+        <h4 id="3"   >
+          <a href="#3" class="heading-link"><i class="fas fa-link"></i></a>3.</h4>
+      <p>HTTP协议并没有对GET和POST的长度做限制，其实是浏览器限制了他们传输大小。</p>
+<p>URL地址是有长度限制的，浏览器不同长度限制的具体数值也是不一样的。比如IE是2083字节。需要注意的是这些仅仅是URL地址栏的长度限制。</p>
+<p>理论上来说POST的长度是没有限制的，但是受服务器的配置限制或者内存大小的限制，造成了实际开发中POST也是有数据长度的限制的。可以在PHP下修改php.conf中的postmaxsize值来设置POST的大小。</p>
+
+        <h4 id="4"   >
+          <a href="#4" class="heading-link"><i class="fas fa-link"></i></a>4.</h4>
+      <blockquote>
+<p>为什么说GET比POST更快？</p>
+</blockquote>
+<p>有一个原因是POST需要在请求的body部分包含数据，所以会多了几个描述部分的首部字段比如：content-type，但这是微乎其微的，可以忽略不计。</p>
+<p>另外一种愿意是POST和GET请求的过程是不一样的<br>POST请求的过程：先进行3次握手，然后服务器返回100continue响应，浏览器再次发送数据，服务器返回200成功响应。<br>GET请求的过程：也是先进性3次握手，然后服务器返回成功响应。<br>也就是说POST是要比GET多进行一次数据传输的，所以GET请求就比POST请求更快。<br>但是在现在服务器配置较高和网速较快的情况下，这多出来的一次数据传输在实际中并没有什么影响。</p>
+
+        <h4 id="5"   >
+          <a href="#5" class="heading-link"><i class="fas fa-link"></i></a>5.</h4>
+      <p>因为GET是获取数据，所以GET请求是安全且幂等的，是无害的。这个安全指得是对数据不会造成影响。幂等简单的来说就是无论获取多少次数据得到的资源都是一样的。</p>
+<p>POST是向服务器传输数据，数据会被重新提交，所以就会有对原有的数据造成伤害。</p>
+</div></div><nav class="paginator"><div class="paginator-inner"></div></nav></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><section class="sidebar-toc hide"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTP%E4%B8%ADGET%E5%92%8CPOST%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.</span> <span class="toc-text">
+          HTTP中GET和POST的区别</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP%EF%BC%9A"><span class="toc-number">1.0.1.</span> <span class="toc-text">
+          HTTP：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GET%E5%92%8CPOST"><span class="toc-number">1.0.2.</span> <span class="toc-text">
+          GET和POST</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1"><span class="toc-number">1.0.2.1.</span> <span class="toc-text">
+          1.</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2"><span class="toc-number">1.0.2.2.</span> <span class="toc-text">
+          2.</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3"><span class="toc-number">1.0.2.3.</span> <span class="toc-text">
+          3.</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4"><span class="toc-number">1.0.2.4.</span> <span class="toc-text">
+          4.</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5"><span class="toc-number">1.0.2.5.</span> <span class="toc-text">
+          5.</span></a></li></ol></li></ol></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/avatar.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">Be Better!</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/Mahongsheng" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="Mhs_990112" target="_blank" rel="noopener" data-popover="微信" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-weixin"></i></span></a><a class="sidebar-ov-social-item" href="863253972" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-qq"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">1</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">0</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">0</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2020</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>Scott Ma | 马洪升</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.2.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.3.0</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/ribbon.js@latest/dist/ribbon.min.js" size="300" alpha="0.6" zIndex="-1"></script><script src="/js/utils.js?v=2.3.0"></script><script src="/js/stun-boot.js?v=2.3.0"></script><script src="/js/scroll.js?v=2.3.0"></script><script src="/js/header.js?v=2.3.0"></script><script src="/js/sidebar.js?v=2.3.0"></script></body></html>
